@@ -3,7 +3,7 @@
 A clean, editorial personal portfolio (dark theme, one violet accent). Plain HTML, CSS and JavaScript: no build step, no dependencies.
 
 ## Links
-- GitHub: https://github.com/nika-kirann
+- GitHub: https://github.com/Kiranxer
 - Instagram: https://instagram.com/justtt.nikaaa
 - Website: https://kdramaheaven.in
 
