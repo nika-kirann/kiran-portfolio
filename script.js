@@ -89,6 +89,41 @@
     io.observe(el);
   });
 
+
+  /* ---------- game account tabs ---------- */
+  const tabs = $$('.game-tab'), ink = $('.tab-ink');
+  const placeInk = t => { if (!ink || !t) return; ink.style.width = t.offsetWidth + 'px'; ink.style.transform = `translateX(${t.offsetLeft - 4}px)`; };
+  const selectTab = (t, focus) => {
+    tabs.forEach(o => {
+      const on = o === t;
+      o.classList.toggle('active', on);
+      o.setAttribute('aria-selected', String(on));
+      o.tabIndex = on ? 0 : -1;
+      const panel = document.getElementById(o.getAttribute('aria-controls'));
+      if (!panel) return;
+      if (on && panel.hidden) {
+        panel.hidden = false;
+        panel.classList.remove('entering'); void panel.offsetWidth; panel.classList.add('entering');
+        $$('[data-count]', panel).forEach(countUp);
+      } else if (!on) panel.hidden = true;
+    });
+    placeInk(t);
+    if (focus) t.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => selectTab(t));
+    t.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        selectTab(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length], true);
+      }
+    });
+  });
+  const activeTab = () => tabs.find(t => t.classList.contains('active'));
+  requestAnimationFrame(() => placeInk(activeTab()));
+  addEventListener('resize', () => placeInk(activeTab()), { passive: true });
+  if (document.fonts) document.fonts.ready.then(() => placeInk(activeTab()));
+
   /* ---------- rotating role word ---------- */
   const rot = $('.rotator');
   if (rot && !reduce) {

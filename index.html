@@ -174,23 +174,54 @@
           <span class="index">04</span>
           <h2>Gaming</h2>
         </div>
-        <div class="game">
-          <figure class="game-shot fade">
-            <span class="zoom-hint" aria-hidden="true">Click to enlarge</span>
-            <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
-            <img data-lightbox src="images/freefire-profile.svg" width="1400" height="630" loading="lazy" alt="Kiran's Free Fire MAX player profile showing the in-game name ME NIKA GOD, level 68, 16,960 likes and a Battle Royale Heroic emblem" />
-          </figure>
-          <div class="game-info fade">
-            <span class="tag">Free Fire MAX</span>
-            <h3>ME NIKA GOD</h3>
-            <p>My Free Fire MAX player profile. Gaming is my passion, and this is where I play.</p>
-            <dl class="stats">
-              <div><dt>Game</dt><dd>Free Fire MAX</dd></div>
-              <div><dt>In-game name</dt><dd>ME NIKA GOD</dd></div>
-              <div><dt>Level</dt><dd><span data-count="68">68</span></dd></div>
-              <div><dt>Likes</dt><dd><span data-count="16960">16,960</span></dd></div>
-              <div class="wide"><dt>Battle Royale</dt><dd><span class="emblem" aria-hidden="true"></span>Heroic emblem</dd></div>
-            </dl>
+        <div class="game-tabs fade" role="tablist" aria-label="Free Fire accounts">
+          <button class="game-tab active" role="tab" id="tab-ff1" aria-controls="panel-ff1" aria-selected="true">ME NIKA GOD <span>Free Fire MAX</span></button>
+          <button class="game-tab" role="tab" id="tab-ff2" aria-controls="panel-ff2" aria-selected="false" tabindex="-1">NIKA <span>Free Fire India</span></button>
+          <span class="tab-ink" aria-hidden="true"></span>
+        </div>
+
+        <div class="game-panels">
+          <div class="game panel active" id="panel-ff1" role="tabpanel" aria-labelledby="tab-ff1">
+            <figure class="game-shot fade">
+              <span class="zoom-hint" aria-hidden="true">Click to enlarge</span>
+              <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
+              <img data-lightbox src="images/freefire-profile.svg" width="1400" height="630" loading="lazy" alt="Kiran's Free Fire MAX player profile showing the in-game name ME NIKA GOD, level 68, 16,960 likes and a Battle Royale Heroic emblem" />
+            </figure>
+            <div class="game-info fade">
+              <span class="tag">Free Fire MAX</span>
+              <h3>ME NIKA GOD</h3>
+              <p>My Free Fire MAX player profile. Gaming is my passion, and this is where I play.</p>
+              <dl class="stats">
+                <div><dt>Game</dt><dd>Free Fire MAX</dd></div>
+                <div><dt>In-game name</dt><dd>ME NIKA GOD</dd></div>
+                <div><dt>Level</dt><dd><span data-count="68">68</span></dd></div>
+                <div><dt>Likes</dt><dd><span data-count="16960">16,960</span></dd></div>
+                <div class="wide"><dt>Battle Royale</dt><dd><span class="emblem" aria-hidden="true"></span>Heroic emblem</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <div class="game panel" id="panel-ff2" role="tabpanel" aria-labelledby="tab-ff2" hidden>
+            <figure class="game-shot">
+              <span class="zoom-hint" aria-hidden="true">Click to enlarge</span>
+              <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
+              <img data-lightbox src="images/freefire-nika.svg" width="1400" height="646" loading="lazy" alt="Kiran's Free Fire India player profile showing the in-game name NIKA, level 69, 21,004 likes, a Battle Royale Heroic emblem, a level 2 Rifler badge and the guild Kerala" />
+            </figure>
+            <div class="game-info">
+              <span class="tag">Free Fire India</span>
+              <h3>NIKA</h3>
+              <p>My Free Fire India player profile, repping guild Kerala.</p>
+              <dl class="stats">
+                <div><dt>Game</dt><dd>Free Fire India</dd></div>
+                <div><dt>In-game name</dt><dd>NIKA</dd></div>
+                <div><dt>Level</dt><dd><span data-count="69">69</span></dd></div>
+                <div><dt>Likes</dt><dd><span data-count="21004">21,004</span></dd></div>
+                <div><dt>Battle Royale</dt><dd><span class="emblem" aria-hidden="true"></span>Heroic emblem</dd></div>
+                <div><dt>Badge</dt><dd>Rifler · Lv 2</dd></div>
+                <div><dt>Guild</dt><dd>Kerala · Lv <span data-count="96">96</span></dd></div>
+                <div><dt>Clan tag</dt><dd>NARAGAKNI</dd></div>
+              </dl>
+            </div>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ A clean, editorial personal portfolio (dark theme, one violet accent). Plain HTM
 - `index.html` — all the content (hero, about, skills, work, journey, contact)
 - `style.css` — colors, layout and animations
 - `script.js` — reveals, counters, cursor, tilt cards, lightbox, nav highlighting, mobile menu
-- `images/` — profile photo and Free Fire MAX profile screenshot (UID and in-game bio masked), stored as SVG files that embed the WebP image
+- `images/` — profile photo and two Free Fire profile screenshots (ME NIKA GOD on Free Fire MAX, NIKA on Free Fire India; UIDs and in-game bios masked), stored as SVG files that embed the WebP image. The Gaming section switches between the two accounts with tabs.
 
 ## How to edit
 - **Text:** open `index.html` and change the words inside each section.
