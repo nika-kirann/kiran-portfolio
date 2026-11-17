@@ -10,7 +10,6 @@
   const nav = $('#nav');
   const bar = $('.progress span');
   const toTop = $('.to-top');
-  const heroPhoto = $('.hero-visual .photo-frame');
   let ticking = false;
   const onScroll = () => {
     const y = scrollY;
@@ -18,7 +17,6 @@
     nav.classList.toggle('scrolled', y > 12);
     bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
     toTop.classList.toggle('show', y > innerHeight * 0.8);
-    if (heroPhoto && !reduce && y < innerHeight * 1.2) heroPhoto.style.transform = `translate3d(0, ${y * -0.08}px, 0)`;
     ticking = false;
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
@@ -139,6 +137,50 @@
       setTimeout(tick, delay);
     };
     setTimeout(tick, 1800);
+  }
+
+
+  /* ---------- hero cutout: layered parallax / tilt ---------- */
+  const stage = $('[data-stage]');
+  if (stage && !reduce) {
+    const back = $('.stage-back', stage), fig = $('.stage-figure', stage);
+    let tx = 0, ty = 0, cx = 0, cy = 0, running = false, visible = true;
+    const apply = () => {
+      const sy = Math.min(scrollY, innerHeight);
+      back.style.transform = `translate3d(${cx * -10}px, ${cy * -8 + sy * -0.03}px, 0)`;
+      fig.style.transform = `translate3d(${cx * 14}px, ${cy * 8 + sy * -0.09}px, 0) rotateY(${cx * 9}deg) rotateX(${cy * -5}deg)`;
+    };
+    const render = () => {
+      cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+      apply();
+      if (visible && (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001)) requestAnimationFrame(render);
+      else running = false;
+    };
+    const kick = () => { if (!running) { running = true; requestAnimationFrame(render); } };
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) kick(); }).observe(stage);
+    addEventListener('scroll', () => { if (visible && !running) requestAnimationFrame(apply); }, { passive: true });
+    if (fine) {
+      const hero = stage.closest('section') || document;
+      hero.addEventListener('pointermove', e => {
+        const r = stage.getBoundingClientRect();
+        tx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width * 0.75)));
+        ty = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height * 0.75)));
+        kick();
+      });
+      hero.addEventListener('pointerleave', () => { tx = ty = 0; kick(); });
+      stage.addEventListener('pointerenter', () => stage.classList.add('is-hover'));
+      stage.addEventListener('pointerleave', () => stage.classList.remove('is-hover'));
+    } else if ('DeviceOrientationEvent' in window && typeof DeviceOrientationEvent.requestPermission !== 'function') {
+      let base = null;
+      addEventListener('deviceorientation', e => {
+        if (e.gamma == null) return;
+        if (!base) base = { g: e.gamma, b: e.beta };
+        tx = Math.max(-1, Math.min(1, (e.gamma - base.g) / 25));
+        ty = Math.max(-1, Math.min(1, (e.beta - base.b) / 25));
+        kick();
+      }, { passive: true });
+    }
+    kick();
   }
 
   /* ---------- lightbox ---------- */

@@ -11,7 +11,7 @@ A clean, editorial personal portfolio (dark theme, one violet accent). Plain HTM
 - `index.html` — all the content (hero, about, skills, work, journey, contact)
 - `style.css` — colors, layout and animations
 - `script.js` — reveals, counters, cursor, tilt cards, lightbox, nav highlighting, mobile menu
-- `images/` — profile photo and two Free Fire profile screenshots (ME NIKA GOD on Free Fire MAX, NIKA on Free Fire India; UIDs and in-game bios masked), stored as SVG files that embed the WebP image. The Gaming section switches between the two accounts with tabs.
+- `images/` — profile photo, a background-removed cutout of it (`kiran-cutout.svg` used in the hero; `.png`/`.webp` originals also deployed), and two Free Fire profile screenshots (ME NIKA GOD on Free Fire MAX, NIKA on Free Fire India; UIDs and in-game bios masked), stored as SVG files that embed the WebP image. The Gaming section switches between the two accounts with tabs.
 
 ## How to edit
 - **Text:** open `index.html` and change the words inside each section.
@@ -21,6 +21,7 @@ A clean, editorial personal portfolio (dark theme, one violet accent). Plain HTM
 
 ## Interactive effects
 Cursor glow, magnetic buttons and card tilt only run on desktop mice/trackpads. All motion turns off automatically for visitors with *reduce motion* enabled.
+The hero cutout floats over a violet glow; on desktop it tilts in 3D with the mouse (glow and figure move at different depths) and the glow brightens on hover. On phones it uses gentle tilt from the device orientation where available, plus scroll parallax. Click it to enlarge.
 
 ## Preview locally
 Open `index.html` in your browser, or run `python3 -m http.server` and visit http://localhost:8000.
